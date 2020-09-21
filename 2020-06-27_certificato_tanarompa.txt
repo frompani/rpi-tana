@@ -1,0 +1,5 @@
+seguito guida: 
+https://www.domoticz.com/wiki/Native_secure_access_with_Lets_Encrypt
+
+per aggiornare , abilitare il NAT sulla porta 80 sul firewall
+

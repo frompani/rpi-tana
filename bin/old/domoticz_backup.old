@@ -1,0 +1,11 @@
+#!/bin/sh
+NOW=$(date +"%Y-%m-%d")
+NAME="RPI-Domoticz"
+SOURCE="root@192.168.2.2:/home/pi/domoticz/"
+DESTINATION="/volume1/homes/guy/backup/$NAME"
+LOGFILE=/volume1/homes/guy/backup/__Logs/$NAME.$NOW.txt
+echo  ------------------- START $NAME -- $(date +"%Y-%m-%d %H:%M:%S") | tee -a $LOGFILE
+rsync -aP --exclude-from '/volume1/homes/guy/backup/excludedfiles.txt' -e "ssh -i /root/.ssh/home" --stats --delete-after --links --link-dest="$DESTINATION/__prev/" "$SOURCE" "$DESTINATION/$NOW" | tee -a $LOGFILE
+rm -f "$DESTINATION/__prev"
+ln -s "$NOW" "$DESTINATION/__prev"
+echo  ------------------- END  $NAME -- $(date +"%Y-%m-%d %H:%M:%S") | tee -a $LOGFILE

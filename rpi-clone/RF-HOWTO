@@ -1,0 +1,7 @@
+
+
+Attenzione a verificare bene DOVE si trova la sd SU CUI FARE LA COPIA
+ad esempio con lsblk
+
+
+sudo ./rpi-clone /dev/sdb
